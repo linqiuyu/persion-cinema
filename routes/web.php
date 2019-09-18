@@ -12,4 +12,5 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::post('/add', 'HomeController@add');
 

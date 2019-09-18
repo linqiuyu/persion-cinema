@@ -7,6 +7,7 @@
     <script src="https://unpkg.com/vue@2.2.6/dist/vue.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/mint-ui@2.2.13/lib/style.css">
     <script src="https://unpkg.com/mint-ui@2.2.13/lib/index.js"></script>
+    <link rel="stylesheet" href="//res.wx.qq.com/open/libs/weui/1.0.0/weui.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>

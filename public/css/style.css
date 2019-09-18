@@ -1,10 +1,13 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #ededed;
 }
 
-/*.list-img {*/
-/*    width: 40%;*/
-/*    height: 13em;*/
-/*    margin: 1em;*/
-/*}*/
+.content-list img {
+    width: 100%;
+}
+
+.content-list .weui-form-preview__value {
+    text-align: left;
+}
