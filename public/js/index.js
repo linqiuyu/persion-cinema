@@ -1,18 +1,11 @@
-new Vue({
-    el: '#app',
-    data: {
-        list: [1,2,3,4,5,6,7],
-        topStatus: ''
-    },
-    methods: {
-        handleClick: function() {
-            this.$toast('Hello world!')
-        },
-        goBack: function() {
-            window.history.go(-1);
-        },
-        loadTop: function () {
-            window.location.reload();
-        },
-    }
-})
+var container = $('.weui-tab__panel'),
+    scrollTo = $('#movies');
+
+container.scrollTop(
+    scrollTo.offset().top - container.offset().top + container.scrollTop()
+);
+
+// Or you can animate the scrolling:
+container.animate({
+    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+});
