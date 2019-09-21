@@ -625,3 +625,30 @@ body {
 .weui-btn_mini img {
     margin-top: 10px;
 }
+
+.weui-form {
+    padding: 56px 0 0;
+    padding: calc(56px + constant(safe-area-inset-top)) constant(safe-area-inset-right) constant(safe-area-inset-bottom) constant(safe-area-inset-left);
+    padding: calc(56px + env(safe-area-inset-top)) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    min-height: 100%;
+    box-sizing: border-box;
+    line-height: 1.4;
+    background-color: #FFFFFF;
+}
+
+.weui-form__text-area {
+    padding: 0 32px;
+    color: rgba(0, 0, 0, 0.9);
+    text-align: center;
+}
+
+.weui-uploader__files2 .weui-progress {
+    display: none;
+}

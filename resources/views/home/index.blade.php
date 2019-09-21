@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+
+
 @section('content')
     <div class="center">
         <a href="{{ asset('create') }}" class="weui-btn_mini weui-btn_default no-border">
@@ -36,7 +38,7 @@
                 <div class="weui-form-preview__bd">
                     <p>
                     <span class="weui-form-preview__value">
-                        <img src="111">
+                        <img src="http://qdy.wangyouquan.cc/banner-shunwei.jpg">
                     </span>
                     </p>
                     <p>
@@ -55,7 +57,7 @@
                 <div class="weui-form-preview__bd">
                     <p>
                     <span class="weui-form-preview__value">
-                        <img src="111">
+                        <img src="http://qdy.wangyouquan.cc/banner-shunwei.jpg">
                     </span>
                     </p>
                     <p>
@@ -74,7 +76,7 @@
                 <div class="weui-form-preview__bd">
                     <p>
                     <span class="weui-form-preview__value">
-                        <img src="111">
+                        <img src="http://qdy.wangyouquan.cc/banner-shunwei.jpg">
                     </span>
                     </p>
                     <p>
@@ -93,7 +95,7 @@
                 <div class="weui-form-preview__bd">
                     <p>
                     <span class="weui-form-preview__value">
-                        <img src="111">
+                        <img src="http://qdy.wangyouquan.cc/banner-shunwei.jpg">
                     </span>
                     </p>
                     <p>
@@ -112,7 +114,7 @@
                 <div class="weui-form-preview__bd">
                     <p>
                     <span class="weui-form-preview__value">
-                        <img src="111">
+                        <img src="http://qdy.wangyouquan.cc/banner-shunwei.jpg">
                     </span>
                     </p>
                     <p>
@@ -125,3 +127,7 @@
             </div>
     </div>
 @endsection
+
+@push('footer-scripts')
+    <script src="{{ asset('js/index.js') }}"></script>
+@endpush
