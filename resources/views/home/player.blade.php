@@ -16,7 +16,7 @@
                     class="video-js"
                     controls
                     preload="auto"
-                    poster="{{ $movie->cover }}"
+                    poster="{{ config('filesystems.disks.qiniu.protocol') }}:{{ $movie->cover }}"
                     data-setup='{}'>
                 <source src="{{ config('filesystems.disks.qiniu.protocol') }}:{{ $movie->video_link }}" type="video/mp4"></source>
                 <p class="vjs-no-js">
