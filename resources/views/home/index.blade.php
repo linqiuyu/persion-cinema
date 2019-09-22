@@ -18,7 +18,7 @@
                 <div class="weui-form-preview__bd">
                     <p>
                     <span class="weui-form-preview__value">
-                        <img src="{{ $movie->cover }}">
+                        <img src="{{ config('filesystems.disks.qiniu.protocol') }}:{{ $movie->cover }}">
                     </span>
                     </p>
                     <p>

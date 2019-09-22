@@ -230,19 +230,17 @@
                 type: 'post',
                 data: data,
                 success: function (response) {
-                    console.log(response);
+                    weui.toast('添加成功，nice～', {
+                        duration: 3000,
+                        callback: function(){
+                            window.location.href = '{{ asset('/') }}';
+                        }
+                    });
                 },
                 error: function (response) {
                     console.log(response);
                 }
             })
-
-            weui.toast('添加成功，nice～', {
-                duration: 3000,
-                callback: function(){
-                    window.location.href = '{{ asset('/') }}';
-                }
-            });
         })
     </script>
 @endpush

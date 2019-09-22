@@ -68,6 +68,7 @@ return [
             'secret_key' => env('QINIU_SECRET_KEY', ''),
             'bucket' => env('QINIU_BUCKET', ''),
             'domain' => 'qdy.wangyouquan.cc',
+            'protocol' => 'http',
         ]
     ],
 

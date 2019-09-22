@@ -18,7 +18,7 @@
                     preload="auto"
                     poster="{{ $movie->cover }}"
                     data-setup='{}'>
-                <source src="{{ $movie->video_link }}" type="video/mp4"></source>
+                <source src="{{ config('filesystems.disks.qiniu.protocol') }}:{{ $movie->video_link }}" type="video/mp4"></source>
                 <p class="vjs-no-js">
                     To view this video please enable JavaScript, and consider upgrading to a
                     web browser that
