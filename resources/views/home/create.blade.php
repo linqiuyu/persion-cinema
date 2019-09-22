@@ -238,7 +238,7 @@
                     });
                 },
                 error: function (response) {
-                    console.log(response);
+                    weui.toast('失败，检查下网络，也有可能是服务器出错了', 3000);
                 }
             })
         })
