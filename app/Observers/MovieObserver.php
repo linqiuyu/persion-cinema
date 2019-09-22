@@ -16,8 +16,8 @@ class MovieObserver
      */
     public function created(Movie $movie)
     {
-        // 如果影片数量超出5个，则删除最早的文件
-        if (Movie::count() > 5) {
+        // 如果影片数量超出6个，则删除最早的文件
+        if (Movie::count() > 6) {
             $expiredMovie = Movie::first();
             $qiniuAuth = new Auth(
                 config('filesystems.disks.qiniu.access_key'),
