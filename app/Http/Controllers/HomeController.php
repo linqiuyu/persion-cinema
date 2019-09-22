@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMovie;
 use App\Models\Movie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Qiniu\Auth;
 
 class HomeController extends Controller
@@ -16,7 +18,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $movies = Movie::take(10)->get();
+        $movies = Movie::orderBy('id', 'desc')->take(9)->get();
         return view('home.index', [
             'movies' => $movies,
             'path' => $request->path(),
@@ -41,7 +43,7 @@ class HomeController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(StoreMovie $request)
     {
         $movie = Movie::create($request->all());
         return $movie;
@@ -57,6 +59,22 @@ class HomeController extends Controller
     {
         return view('home.about', [
             'path' => $request->path(),
+        ]);
+    }
+
+    /**
+     * Video play page.
+     *
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function player(Request $request, $id)
+    {
+        $movie = Movie::findOrFail($id);
+        return view('home.player', [
+            'path' => $request->path(),
+            'movie' => $movie
         ]);
     }
 }

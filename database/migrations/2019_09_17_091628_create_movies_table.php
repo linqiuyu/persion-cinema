@@ -20,6 +20,7 @@ class CreateMoviesTable extends Migration
             $table->text('description')->nullable();
             $table->string('video_link');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

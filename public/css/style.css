@@ -652,3 +652,8 @@ body {
 .weui-uploader__files2 .weui-progress {
     display: none;
 }
+
+.weui-icon-percent {
+    color: #25251c;
+    font-size: 16px;
+}

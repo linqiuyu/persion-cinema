@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-
+@section('title', 'index')
 
 @section('content')
     <div class="center">
@@ -26,105 +26,10 @@
                     </p>
                 </div>
                 <div class="weui-form-preview__ft">
-                    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="{{ $movie->video_link }}">观看</a>
+                    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="{{ asset('player') }}/{{ $movie->id }}">观看</a>
                 </div>
             </div>
         @endforeach
-            <br/>
-            <div class="weui-form-preview">
-                <div class="weui-form-preview__hd">
-                    <em class="weui-form-preview__value">11</em>
-                </div>
-                <div class="weui-form-preview__bd">
-                    <p>
-                    <span class="weui-form-preview__value">
-                        <img src="http://qdy.wangyouquan.cc/banner-shunwei.jpg">
-                    </span>
-                    </p>
-                    <p>
-                        <span class="weui-form-preview__value">111</span>
-                    </p>
-                </div>
-                <div class="weui-form-preview__ft">
-                    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="111">观看</a>
-                </div>
-            </div>
-            <br/>
-            <div class="weui-form-preview">
-                <div class="weui-form-preview__hd">
-                    <em class="weui-form-preview__value">11</em>
-                </div>
-                <div class="weui-form-preview__bd">
-                    <p>
-                    <span class="weui-form-preview__value">
-                        <img src="http://qdy.wangyouquan.cc/banner-shunwei.jpg">
-                    </span>
-                    </p>
-                    <p>
-                        <span class="weui-form-preview__value">111</span>
-                    </p>
-                </div>
-                <div class="weui-form-preview__ft">
-                    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="111">观看</a>
-                </div>
-            </div>
-            <br/>
-            <div class="weui-form-preview">
-                <div class="weui-form-preview__hd">
-                    <em class="weui-form-preview__value">11</em>
-                </div>
-                <div class="weui-form-preview__bd">
-                    <p>
-                    <span class="weui-form-preview__value">
-                        <img src="http://qdy.wangyouquan.cc/banner-shunwei.jpg">
-                    </span>
-                    </p>
-                    <p>
-                        <span class="weui-form-preview__value">111</span>
-                    </p>
-                </div>
-                <div class="weui-form-preview__ft">
-                    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="111">观看</a>
-                </div>
-            </div>
-            <br/>
-            <div class="weui-form-preview">
-                <div class="weui-form-preview__hd">
-                    <em class="weui-form-preview__value">11</em>
-                </div>
-                <div class="weui-form-preview__bd">
-                    <p>
-                    <span class="weui-form-preview__value">
-                        <img src="http://qdy.wangyouquan.cc/banner-shunwei.jpg">
-                    </span>
-                    </p>
-                    <p>
-                        <span class="weui-form-preview__value">111</span>
-                    </p>
-                </div>
-                <div class="weui-form-preview__ft">
-                    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="111">观看</a>
-                </div>
-            </div>
-            <br/>
-            <div class="weui-form-preview">
-                <div class="weui-form-preview__hd">
-                    <em class="weui-form-preview__value">11</em>
-                </div>
-                <div class="weui-form-preview__bd">
-                    <p>
-                    <span class="weui-form-preview__value">
-                        <img src="http://qdy.wangyouquan.cc/banner-shunwei.jpg">
-                    </span>
-                    </p>
-                    <p>
-                        <span class="weui-form-preview__value">111</span>
-                    </p>
-                </div>
-                <div class="weui-form-preview__ft">
-                    <a class="weui-form-preview__btn weui-form-preview__btn_primary" href="111">观看</a>
-                </div>
-            </div>
     </div>
 @endsection
 

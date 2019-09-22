@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title', 'create')
+
+@push('scripts')
+    <script src="https://unpkg.com/qiniu-js@2.5.4/dist/qiniu.min.js"></script>
+@endpush
+
 @section('content')
     <form class="weui-form" id="create_form">
         <div class="weui-form__text-area">
@@ -29,7 +35,7 @@
                             <div class="weui-uploader__info"><span id="uploadCount">0</span>/1</div>
                         </div>
                         <div class="weui-uploader__bd">
-                            <ul class="weui-uploader__files" id="uploaderFiles"></ul>
+                            <ul class="weui-uploader__files1" id="uploaderFiles1"></ul>
                             <div class="weui-uploader__input-box">
                                 <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*"
                                        multiple=""/>
@@ -55,7 +61,8 @@
                                              style="width: 0%;"></div>
                                     </div>
                                     <a href="javascript:;" class="weui-progress__opr" id="reset_upload">
-                                        <i class="weui-icon-cancel"></i>
+                                        <i class="weui-icon-percent" id="video_percent_icon"></i>
+                                       <i class="weui-icon-cancel"></i>
                                     </a>
                                 </div>
                             </ul>
@@ -76,6 +83,10 @@
             <a class="weui-btn weui-btn_primary" href="javascript:" id="store_form">确定</a>
         </div>
     </form>
+@endsection
+
+@push('footer-scripts')
+    <script src="{{ asset('js/create.js') }}"></script>
 
     <script>
         // 封面图片上传
@@ -110,7 +121,7 @@
                 }
 
                 // 上传图片
-                var observer = {
+                var img_observer = {
                     next(res) {
                         console.log(res);
                     },
@@ -122,13 +133,13 @@
                     complete(res) {
                         $('#uploadCount').html(uploadCount);
                         $('#cover_input').val('//{{ config('filesystems.disks.qiniu.domain') }}/' + res.key);
+                        $('#image_preview').css('background-image', '//{{ config('filesystems.disks.qiniu.domain') }}/' + res.key);
                         console.log(res);
                     }
                 };
-                var observable = qiniu.upload(this, 'images/' + this.name, '{{ $qiniu->uploadToken(config('filesystems.disks.qiniu.bucket')) }}', {}, {});
-                subscription = observable.subscribe(observer);
-
-                $('#uploaderFiles').append('<li class="weui-uploader__file" data-id="1"> <div class="weui-uploader__file-content"><i class="weui-icon-warn"></i></div> </li>');
+                var img_observable = qiniu.upload(this, 'images/' + this.name, '{{ $qiniu->uploadToken(config('filesystems.disks.qiniu.bucket')) }}', {}, {});
+                $('#uploaderFiles1').append('<li class="weui-uploader__file" id="image_preview" data-id="1"> <div class="weui-uploader__file-content"><i class="weui-icon-warn"></i></div> </li>');
+                var img_subscription = img_observable.subscribe(img_observer);
 
                 ++uploadCount;
 
@@ -137,7 +148,7 @@
         });
 
         // 视屏上传
-        var subscription = null;
+        var video_subscription = null;
         var uploader = weui.uploader('#uploader_video', {
             url: 'http://localhost:8000',
             auto: false,
@@ -154,9 +165,10 @@
             },
             onQueued: function () {
                 // 上传视屏
-                var observer = {
+                var video_observer = {
                     next(res) {
                         $('#upload_percent').css('width', res.total.percent + '%');
+                        $('#video_percent_icon').html(parseInt(res.total.percent) + '%')
                         console.log(res);
                     },
                     error(err) {
@@ -168,13 +180,13 @@
                         console.log(res);
                     }
                 };
-                var observable = qiniu.upload(this, 'videos/' + this.name, '{{ $qiniu->uploadToken(config('filesystems.disks.qiniu.bucket')) }}', {}, {})
+                var video_observable = qiniu.upload(this, 'videos/' + this.name, '{{ $qiniu->uploadToken(config('filesystems.disks.qiniu.bucket')) }}', {}, {})
                 // 显示进度
                 $('.weui-progress').css('display', 'flex');
                 // 隐藏添加按钮
                 $('#video_input_box').css('display', 'none');
 
-                subscription = observable.subscribe(observer);
+                video_subscription = video_observable.subscribe(video_observer);
 
                 // console.log(this.status); // 文件的状态：'ready', 'progress', 'success', 'fail'
                 // console.log(this.base64); // 如果是base64上传，file.base64可以获得文件的base64
@@ -191,8 +203,8 @@
             $('#video_input_box').css('display', 'inline-block');
 
             // 如果正在上传视屏，则取消上传
-            if (subscription !== null) {
-                subscription.unsubscribe();
+            if (video_subscription !== null) {
+                video_subscription.unsubscribe();
             }
         })
 
@@ -203,23 +215,34 @@
                 cover: $('#cover_input').val(),
                 video_link: $('#video_link_input').val(),
             };
-            console.log(data);
-            {{--$.ajax({--}}
-            {{--    url: '{{ asset('store') }}',--}}
-            {{--    type: 'post',--}}
-            {{--    data: data,--}}
-            {{--    success: function (response) {--}}
-            {{--        console.log(response);--}}
-            {{--    },--}}
-            {{--    error: function (response) {--}}
-            {{--        console.log(response);--}}
-            {{--    }--}}
-            {{--})--}}
+
+            if (data.name === '' || data.name === null || data.name === undefined) {
+                weui.toast('你还没填写电影名称', 3000);
+                return false;
+            }
+            if (data.video_link === '' || data.video_link === null || data.video_link === undefined) {
+                weui.toast('你还没上传电影', 3000);
+                return false;
+            }
+
+            $.ajax({
+                url: '{{ asset('store') }}',
+                type: 'post',
+                data: data,
+                success: function (response) {
+                    console.log(response);
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            })
+
+            weui.toast('添加成功，nice～', {
+                duration: 3000,
+                callback: function(){
+                    window.location.href = '{{ asset('/') }}';
+                }
+            });
         })
     </script>
-@endsection
-
-@push('footer-scripts')
-    <script src="{{ asset('js/create.js') }}"></script>
-    <script src="https://unpkg.com/qiniu-js@2.5.4/dist/qiniu.min.js"></script>
 @endpush
