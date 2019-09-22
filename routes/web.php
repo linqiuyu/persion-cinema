@@ -17,4 +17,5 @@ Route::get('/about', 'HomeController@about');
 Route::get('/create', 'HomeController@create');
 Route::post('/store', 'HomeController@store');
 Route::get('/player/{id}', 'HomeController@player');
+Route::get('/cipher', 'HomeController@cipher');
 

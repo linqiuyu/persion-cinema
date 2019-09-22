@@ -10,6 +10,11 @@ use Qiniu\Auth;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('cipher')->except('cipher');
+    }
+
     /**
      * Index page.
      *
@@ -75,6 +80,13 @@ class HomeController extends Controller
         return view('home.player', [
             'path' => $request->path(),
             'movie' => $movie
+        ]);
+    }
+
+    public function cipher(Request $request) {
+        return view('home.cipher', [
+            'path' => $request->path(),
+            'url' => $request->url,
         ]);
     }
 }
