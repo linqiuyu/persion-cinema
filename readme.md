@@ -1,13 +1,13 @@
 使用laravel6.0搭建的个人影院，只适配手机端
 
-###后端
+### 后端
 php7.0及以上
 laravel6.0
 
-###前端
+### 前端
 weui
 
-###安装
+### 安装
 复制 .env.example 到 .env   
 生成APP_KEY```php artisan key:generate```   
 
