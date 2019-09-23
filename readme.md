@@ -9,6 +9,7 @@ weui
 
 ### 安装
 复制 .env.example 到 .env   
+安装依赖```composer install```   
 生成APP_KEY```php artisan key:generate```   
 
 视频和图片使用七牛云的对象存储，配置在config/filesystems.php
