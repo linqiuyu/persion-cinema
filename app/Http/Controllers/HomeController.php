@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('cipher')->except('cipher');
+//        $this->middleware('cipher')->except('cipher');
     }
 
     /**

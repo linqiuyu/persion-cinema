@@ -15,14 +15,7 @@ class CheckCipher
      */
     public function handle($request, Closure $next)
     {
-        $ciphers = array(
-            '胖胖',
-            '廖金萍',
-            '金萍',
-            '傻狗',
-            '林秋余',
-            '秋余',
-        );
+        $ciphers = [];
         if (!isset($_COOKIE['cipher']) || !in_array($_COOKIE['cipher'], $ciphers)) {
             return redirect('cipher?url=' . $request->fullUrl());
         }

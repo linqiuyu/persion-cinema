@@ -64,12 +64,13 @@ return [
             'url' => env('AWS_URL'),
         ],
         'qiniu' => [
-            'access_key' => env('QINIU_ACCESS_KEY', ''),
-            'secret_key' => env('QINIU_SECRET_KEY', ''),
-            'bucket' => env('QINIU_BUCKET', ''),
-            'domain' => 'qdy.wangyouquan.cc',
-            'protocol' => 'http',
-        ]
+            'access_key' => env('QINIU_ACCESS_KEY', ''), // access key
+            'secret_key' => env('QINIU_SECRET_KEY', ''), // secret key
+            'bucket' => env('QINIU_BUCKET', ''), // 存储空间名
+            'domain' => 'qdy.wangyouquan.cc', // 绑定的域名
+            'protocol' => 'http', // 协议
+            'maximum' => 6, // 最大视频数量　
+        ],
     ],
 
 ];
